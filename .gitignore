@@ -2,3 +2,7 @@
 
 /node_modules
 
+# Ignore yarn log
+
+/yarn-error.log
+
