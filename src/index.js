@@ -1,7 +1,7 @@
-const app = require('express')();
-const port = 3001;
-
+const app = require("express")();
 const bodyParser = require('body-parser');
+
+app.set("PORT", process.env.PORT || 3001);
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -13,5 +13,7 @@ app.post('/task', function (req, res) {
 	});
 });
 
-app.listen(3001, () => console.log(`Example app listening on port ${port}!`));
+app.listen(app.get("PORT"), () => {
+	console.log(`Example app listening on port ${port}!`)
+});
 
