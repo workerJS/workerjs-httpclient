@@ -14,6 +14,6 @@ app.post('/task', function (req, res) {
 });
 
 app.listen(app.get("PORT"), () => {
-	console.log(`Example app listening on port ${port}!`)
+	console.log("HTTPClient listening on port "+app.get("PORT")+"!")
 });
 
