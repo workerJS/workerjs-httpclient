@@ -13,6 +13,13 @@ app.post('/task', function (req, res) {
 	});
 });
 
+app.post('/message', function (req, res) {
+	console.log(req.body);
+	res.json({
+		taskID: new Date()
+	});
+});
+
 app.listen(app.get("PORT"), () => {
 	console.log("HTTPClient listening on port "+app.get("PORT")+"!")
 });
