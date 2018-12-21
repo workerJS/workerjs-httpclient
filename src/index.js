@@ -1,24 +1,8 @@
-const app = require("express")();
-const bodyParser = require('body-parser');
+const app = require("./app");
 
 app.set("PORT", process.env.PORT || 3001);
 
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-
-app.post('/task', function (req, res) {
-	console.log(req.body);
-	res.json({
-		taskID: new Date()
-	});
-});
-
-app.post('/message', function (req, res) {
-	console.log(req.body);
-	res.json({
-		taskID: new Date()
-	});
-});
+require("./routes");
 
 app.listen(app.get("PORT"), () => {
 	console.log("HTTPClient listening on port "+app.get("PORT")+"!")
