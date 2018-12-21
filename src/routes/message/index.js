@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 /**
- * This function comment is parsed by doctrine
+ * This route is used for sending message to task runner. 
  * @route POST /message
  * @group message - Message webhook
  * @param {string} email.query.required - username or email - eg: user@domain

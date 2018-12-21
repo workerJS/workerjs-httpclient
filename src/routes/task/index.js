@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 /**
- * This function comment is parsed by doctrine
+ * This is used for creating new task on workerJS and establishing connection to listener. 
  * @route POST /task
  * @group task - Task creation
  * @param {string} email.query.required - username or email - eg: user@domain
