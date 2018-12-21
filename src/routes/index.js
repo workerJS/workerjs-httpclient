@@ -1,9 +1,7 @@
-module.exports = () => {
-	const router = require("express").Router();
+const router = require("express").Router();
 
-	router.use("/task", require("./task"));
-	router.use("/message", require("./message"));
+router.use("/task", require("./task"));
+router.use("/message", require("./message"));
 
-	return router;
-};
+module.exports = router;
 
