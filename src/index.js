@@ -1,32 +1,36 @@
-const app = require("./app");
+module.exports = (bridge) => {
+	const app = require("./app");
 
-const expressSwagger = require('express-swagger-generator')(app);
+	app.set("bridge", bridge);
 
-app.set("PORT", process.env.PORT || 3000);
+	const expressSwagger = require('express-swagger-generator')(app);
 
-app.use("/", require("./routes"));
+	app.set("PORT", process.env.PORT || 3000);
 
-let options = {
-	swaggerDefinition: {
-		info: {
-			description: 'Middleware for communication with WorkerJS',
-			title: 'HTTPClient',
-			version: '0.0.0',
+	app.use("/", require("./routes"));
+
+	let options = {
+		swaggerDefinition: {
+			info: {
+				description: 'Middleware for communication with WorkerJS',
+				title: 'HTTPClient',
+				version: '0.0.0',
+			},
+			host: 'localhost:3000',
+			basePath: '/',
+			produces: [
+				"application/json"
+			],
+			schemes: ['http']
 		},
-		host: 'localhost:3000',
-		basePath: '/',
-		produces: [
-			"application/json"
-		],
-		schemes: ['http']
-	},
-	basedir: __dirname, //app absolute path
-	files: ['./routes/**/*.js'] //Path to the API handle folder
-};
+		basedir: __dirname, //app absolute path
+		files: ['./routes/**/*.js'] //Path to the API handle folder
+	};
 
-expressSwagger(options)
+	expressSwagger(options)
 
-app.listen(app.get("PORT"), () => {
-	console.log("HTTPClient listening on port "+app.get("PORT")+"!")
-});
+	app.listen(app.get("PORT"), () => {
+		console.log("HTTPClient listening on port "+app.get("PORT")+"!")
+	});
+}
 
