@@ -32,5 +32,7 @@ module.exports = (bridge) => {
 	app.listen(app.get("PORT"), () => {
 		console.log("HTTPClient listening on port "+app.get("PORT")+"!")
 	});
+
+	return app;
 }
 
