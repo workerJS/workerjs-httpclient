@@ -1,6 +1,6 @@
 {
   "name": "worjerjs-httpclient",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "HTTP middleware for WorkerJS. ",
   "main": "index.js",
   "repository": "https://github.com/workerJS/workerjs-httpclient.git",
