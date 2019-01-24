@@ -1,5 +1,5 @@
 {
-  "name": "worjerjs-httpclient",
+  "name": "workerjs-httpclient",
   "version": "0.0.5",
   "description": "HTTP middleware for WorkerJS. ",
   "main": "index.js",
