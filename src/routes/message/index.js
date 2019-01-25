@@ -17,8 +17,15 @@ const router = require("express").Router();
  * @returns {Error}  default - Unexpected error
  */
 
+const taskManager = require("../../task");
+
 router.post("/", function (req, res) {
-	console.log(req.body);
+	const taskID = req.body.taskID;
+
+	const task = taskManager.getTaskByID(taskID);
+
+	task.events.emit("message", req.body.message);
+
 	res.json({
 		taskID: new Date()
 	});

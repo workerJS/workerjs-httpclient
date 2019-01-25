@@ -19,17 +19,17 @@ const router = require("express").Router();
  * @returns {Error}  default - Unexpected error
  */
 
-const crypto = require('crypto');
+const taskManager = require("../../task");
+
+console.log(taskManager);
 
 router.post("/", function (req, res) {
 	req.body.time = (new Date()) * 1;
 
-	const taskID = (crypto.createHash('sha256').update(JSON.stringify(req.body), 'utf8').digest("hex"));
-
-	console.log(taskID);
+	const task = taskManager.newTask(req.body);
 
 	res.json({
-		taskID: taskID
+		taskID: task.taskID
 	});
 });
 
