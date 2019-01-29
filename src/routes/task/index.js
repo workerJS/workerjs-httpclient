@@ -21,8 +21,6 @@ const router = require("express").Router();
 
 const taskManager = require("../../task");
 
-console.log(taskManager);
-
 router.post("/", function (req, res) {
 	req.body.time = (new Date()) * 1;
 

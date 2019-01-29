@@ -1,7 +1,9 @@
 const eventManager = require("../eventManager");
 const EventEmitter = require('events');
 
-const crypto = require('crypto');
+const crypto = require("crypto");
+
+const request = require("request");
 
 const taskManager = {
 	_tasks: {},
@@ -11,6 +13,28 @@ const taskManager = {
 
 		task.taskID = taskID;
 		task.events = new EventEmitter();
+
+		task.on = (name, callback) => {
+			task.events.on(name, callback);
+		};
+
+		task.emit = (name, data) => {
+			return new Promise((resolve, reject) => {
+				request.post(task.webhook, {
+					json: true,
+					body: {
+						taskID: task.taskID,
+						message: data
+					}
+				}, (err, response, body) => {
+					if(err) {
+						reject(err);
+					}
+
+					resolve(body);
+				});
+			});
+		};
 
 		taskManager._tasks[taskID] = task;
 

@@ -3,9 +3,11 @@ module.exports = (bridge) => {
 
 	app.set("bridge", bridge);
 
-	app.set("events", require("./eventManager"));
+	const events = require("./eventManager");
 
-	const expressSwagger = require('express-swagger-generator')(app);
+	app.set("events", events);
+
+	const expressSwagger = require("express-swagger-generator")(app);
 
 	app.set("PORT", process.env.PORT || 3000);
 

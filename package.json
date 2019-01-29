@@ -18,6 +18,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "express-swagger-generator": "^1.1.11",
+    "request": "^2.88.0",
     "workerjs-client": "^2.0.3"
   },
   "devDependencies": {
